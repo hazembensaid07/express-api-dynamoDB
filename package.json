@@ -1,0 +1,22 @@
+{
+  "name": "express-api-dynamodb",
+  "version": "1.0.0",
+  "description": "a crud api using express server and dynamoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm run clean && npm run build && aws s3 cp build.zip s3://express-lambda-zip/ && aws lambda update-function-code --function-name express-api --s3-bucket express-lambda-zip --s3-key build.zip",
+    "clean": "rm build.zip",
+    "build": "zip -r build.zip ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1293.0",
+    "aws-serverless-express": "^3.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "serverless-http": "^3.1.1",
+    "uuid": "^9.0.0"
+  }
+}
